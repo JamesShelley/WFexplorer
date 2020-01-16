@@ -34,11 +34,13 @@ namespace WFexplorer
                 {
                     label2.Visible = false;
                     label3.Visible = true;
+                    label5.Visible = false;
                 } else
                 {
                     label3.Visible = false;
                     GetSubDirectories(@value);
                     Clipboard.SetText(outputFileDirectory);
+                    label5.Visible = true;
                     label5.ForeColor = Color.Green;
                     label5.Text = "Scan complete.";
                     label2.Text = "Output file copied to clipboard: " + outputFileDirectory;
