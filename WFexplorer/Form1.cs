@@ -114,7 +114,7 @@ namespace WFexplorer
                 {
                     using (System.IO.StreamWriter addToFile = new System.IO.StreamWriter(outputFileDirectory, true))
                     {
-                        addToFile.WriteLine("\tFile located: " + Path.GetFileName(file) + ", Length in Bytes: " + file.Length);
+                        addToFile.WriteLine("\tFile located: " + Path.GetFileName(file) + ", Length in Bytes: " + file.Length + ", Extension: " + Path.GetExtension(file));
                     }
                 }
                 catch (System.IO.IOException e)
