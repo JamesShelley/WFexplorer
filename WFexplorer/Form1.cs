@@ -26,6 +26,7 @@ namespace WFexplorer
         {
             checkForDelete();
             string value = textBox1.Text;
+          
             try
             {
                 // Determine whether the directory exists.
@@ -38,7 +39,9 @@ namespace WFexplorer
                     label3.Visible = false;
                     GetSubDirectories(@value);
                     Clipboard.SetText(outputFileDirectory);
-                    label2.Text = "Scan complete, output file copied to clipboard: " + outputFileDirectory;
+                    label5.ForeColor = Color.Green;
+                    label5.Text = "Scan complete.";
+                    label2.Text = "Output file copied to clipboard: " + outputFileDirectory;
                     label2.Visible = true;
                     Process.Start(outputFileDirectory);
                 }
@@ -75,6 +78,8 @@ namespace WFexplorer
         private static void LoadSubDirs(string dir)
 
         {
+            ProgressBar progressBar1 = new ProgressBar();
+            progressBar1.Visible = true;
             try
             {
                 using (System.IO.StreamWriter addToFile = new System.IO.StreamWriter(outputFileDirectory, true))
@@ -97,6 +102,7 @@ namespace WFexplorer
 
         private static void getFilesInDirectory(string currentDir)
         {
+ 
             string[] filesInDir = Directory.GetFiles(currentDir);
             foreach (string file in filesInDir)
             {
@@ -167,6 +173,26 @@ namespace WFexplorer
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click_1(object sender, EventArgs e)
         {
 
         }
