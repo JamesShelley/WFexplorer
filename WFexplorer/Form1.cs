@@ -25,10 +25,27 @@ namespace WFexplorer
         {
             checkForDelete();
             string value = textBox1.Text;
-            GetSubDirectories(@value);
-            Clipboard.SetText(outputFileDirectory);
-            label2.Text = "Scan complete, output file copied to clipboard: " + outputFileDirectory;
-            label2.Visible = true;
+            try
+            {
+                // Determine whether the directory exists.
+                if (!Directory.Exists(value))
+                {
+                    label2.Visible = false;
+                    label3.Visible = true;
+                } else
+                {
+                    label3.Visible = false;
+                    GetSubDirectories(@value);
+                    Clipboard.SetText(outputFileDirectory);
+                    label2.Text = "Scan complete, output file copied to clipboard: " + outputFileDirectory;
+                    label2.Visible = true;
+                }
+            }
+            catch (Exception g)
+            {
+                label3.Visible = true;
+            }
+          
         }
 
         public static void GetSubDirectories(string Path)
@@ -143,6 +160,11 @@ namespace WFexplorer
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
