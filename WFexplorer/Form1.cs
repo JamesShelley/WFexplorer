@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace WFexplorer
                     Clipboard.SetText(outputFileDirectory);
                     label2.Text = "Scan complete, output file copied to clipboard: " + outputFileDirectory;
                     label2.Visible = true;
+                    Process.Start(outputFileDirectory);
                 }
             }
             catch (Exception g)
