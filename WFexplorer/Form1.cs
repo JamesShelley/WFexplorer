@@ -20,11 +20,12 @@ namespace WFexplorer
         public Form1()
         {
             InitializeComponent();
+            createFileLocation();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            checkForDelete();
+           // checkForDelete();
             string value = textBox1.Text;
           
             try
@@ -51,14 +52,13 @@ namespace WFexplorer
             catch (Exception g)
             {
                 label3.Visible = true;
+                label3.Text = g.StackTrace;
             }
           
         }
 
         public static void GetSubDirectories(string Path)
         {
-            createFileLocation();
-
             try
             {
                 using (System.IO.StreamWriter addToFile = new System.IO.StreamWriter(outputFileDirectory, true))
@@ -78,7 +78,6 @@ namespace WFexplorer
             }
         }
         private static void LoadSubDirs(string dir)
-
         {
             ProgressBar progressBar1 = new ProgressBar();
             progressBar1.Visible = true;
@@ -101,7 +100,7 @@ namespace WFexplorer
                 LoadSubDirs(subdirectory);
             }
         }
-
+        
         private static void getFilesInDirectory(string currentDir)
         {
  
@@ -124,14 +123,9 @@ namespace WFexplorer
             }
         }
 
-        private static void checkForDelete()
-        {
-            File.Delete(outputFileDirectory);
-        }
-
         private static void createFileLocation()
         {
-
+            string tempPath = @"C:\temp";
             string path = @"C:\temp\FileCleaner";
 
             try
@@ -140,9 +134,10 @@ namespace WFexplorer
                 if (!Directory.Exists(path))
                 {
                     // Try to create the directory.
-                    DirectoryInfo di = Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(tempPath);
+                    Directory.CreateDirectory(path);
                     // Create the file, or overwrite if the file exists.
-                    outputFileDirectory += dt;
+                    //outputFileDirectory += dt;
                     File.Create(outputFileDirectory);
                 }
             }
